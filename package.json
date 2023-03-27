@@ -1,0 +1,32 @@
+{
+  "name": "rohook-bot",
+  "version": "1.0.0",
+  "description": "Send bot messages in your Discord server from Roblox.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "register": "node src/utils/register.js"
+  },
+  "keywords": [
+    "Roblox",
+    "Discord",
+    "Rohook"
+  ],
+  "author": "Jeremy O'Guinn",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.6.0",
+    "cors": "^2.8.5",
+    "discord.js": "^14.8.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "humanize-duration": "^3.28.0",
+    "mongoose": "^7.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.21",
+    "superagent": "^8.0.9",
+    "uuid": "^9.0.0"
+  }
+}
