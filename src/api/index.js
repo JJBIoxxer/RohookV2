@@ -11,4 +11,6 @@ readdirSync(__dirname).filter(file => extname(file) === '.js' && !file.startsWit
 
 router.get('/', (req, res) => res.json({ status: 'OK' }));
 
+router.get('/uptime', (req, res) => res.json({ uptime: Date.now() - process.env.STARTED_AT }));
+
 module.exports = router;

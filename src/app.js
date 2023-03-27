@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const superagent = require('superagent');
+const humanizeDuration = require('humanize-duration');
 
 require('dotenv').config();
 
@@ -29,6 +30,13 @@ app.get('/', (req, res) => res.status(200).send(`
 app.get('/invite', (req, res) => res.status(304).redirect(process.env.OAUTH2_BOT_INVITE));
 app.get('/support', (req, res) => res.status(304).redirect(process.env.DEV_GUILD_INVITE));
 
+app.get('/uptime', (req, res) => res.send(
+    humanizeDuration(
+        Date.now() - process.env.STARTED_AT,
+        { units: ['d', 'h', 'm', 's', 'ms'], round: true }
+    )
+));
+
 app.use('/api', require('./api'));
 
 app.use(require('./middlewares/errorHandler'));
@@ -39,5 +47,6 @@ db.init(process.env.MONGO_URI, async () => {
     const port = process.env.PORT || 1440;
     app.listen(port, () => {
         console.log(`🔌 Server connected on port ${port}.\n`)
+        process.env.STARTED_AT = Date.now();
     });
 })
