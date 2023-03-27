@@ -5,6 +5,7 @@ const errorCodes = [
     'NotFound',
     'MethodNotAllowed',
     'Gone',
+    'Teapot',
     'TooManyRequests',
     'InternalServerError',
     

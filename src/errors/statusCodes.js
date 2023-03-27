@@ -7,6 +7,7 @@ const statusMessages = {
     [404]: 'Not Found',
     [405]: 'MethodNotAllowed',
     [410]: 'Gone',
+    [418]: 'I\'m a teapot',
     [429]: 'Too Many Requests',
     [500]: 'Internal Server Error'
 };
@@ -20,6 +21,7 @@ module.exports = {
     [RohookErrorCodes.NotFound]: get(404),
     [RohookErrorCodes.MethodNotAllowed]: get(405),
     [RohookErrorCodes.Gone]: get(410),
+    [RohookErrorCodes.Teapot]: get(418),
     [RohookErrorCodes.TooManyRequests]: get(429),
     [RohookErrorCodes.InternalServerError]: get(500),
 

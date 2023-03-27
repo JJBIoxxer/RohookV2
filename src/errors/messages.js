@@ -7,6 +7,7 @@ module.exports = {
     [RohookErrorCodes.NotFound]: '404: Not Found',
     [RohookErrorCodes.MethodNotAllowed]: '405: Method Not Allowed',
     [RohookErrorCodes.Gone]: '410: Gone',
+    [RohookErrorCodes.Teapot]: '418: I\'m a teapot',
     [RohookErrorCodes.TooManyRequests]: '429: Too Many Requests',
     [RohookErrorCodes.InternalServerError]: '500: Internal Server Error',
 
