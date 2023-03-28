@@ -1,4 +1,4 @@
-console.log(`⏰ Starting up ${__dirname}\\server.js\n`);
+console.log(`⏰ Starting up ${__filename}\n`);
 
 const express = require('express');
 const morgan = require('morgan');
@@ -30,12 +30,31 @@ app.get('/', (req, res) => res.status(200).send(`
 app.get('/invite', (req, res) => res.status(304).redirect(process.env.OAUTH2_BOT_INVITE));
 app.get('/support', (req, res) => res.status(304).redirect(process.env.DEV_GUILD_INVITE));
 
-app.get('/uptime', (req, res) => res.send(
-    humanizeDuration(
-        Date.now() - process.env.STARTED_AT,
-        { units: ['d', 'h', 'm', 's', 'ms'], round: true }
-    )
-));
+app.get('/uptime', (req, res) => res.send(`<!DOCTYPE html>
+    <html>
+        <head>
+            <title>RohookV2 Uptime</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+            <style>
+                body {
+                    background-color: #242424;
+                }
+                h3 {
+                    color: #ffffff;
+                    font-family: 'Roboto';
+                }
+            </style>
+        </head>
+        <body>
+            <h3><b>${humanizeDuration(
+                Date.now() - process.env.STARTED_AT,
+                { units: ['d', 'h', 'm', 's', 'ms'], round: true }
+            )}</b></h3>
+        </body>
+    </html>
+`));
 
 app.use('/api', require('./api'));
 
