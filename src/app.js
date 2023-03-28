@@ -39,6 +39,7 @@ app.get('/uptime', (req, res) => res.send(
 
 app.use('/api', require('./api'));
 
+app.use(require('./middlewares/notFoundHandler'));
 app.use(require('./middlewares/errorHandler'));
 
 db.init(process.env.MONGO_URI, async () => {
